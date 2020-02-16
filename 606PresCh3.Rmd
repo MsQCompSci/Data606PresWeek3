@@ -1,0 +1,87 @@
+---
+title: "Chapter 3 - Probability Presentation"
+author: "Layla Quinones"
+date: "2/16/2020"
+output:
+  pdf_document:
+    extra_dependencies:
+    - geometry
+    - multicol
+    - multirow
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+# 3.17 (p.110) - Burger Preferences
+A 2010 SurveyUSA poll asked 500 Los Angeles residents, "What is the best
+hamburger place in Southern California? Five Guys Burgers? In-N-Out Burger? Fat Burger? Tommy's Hamburgers? Umami Burger? Or somewhere else?"
+The distribution of responses by gender is shown below:
+
+\begin{center}
+\begin{tabular}{ll  cc c}
+                                        &           & \multicolumn{2}{c}{\textit{Gender}} \\
+\cline{3-4}
+                                           &    & Male  & Female  & Total \\
+\cline{2-5}
+                                        & Five Guys Burgers      & 5   & 6       & 11  \\
+\multirow{4}{*}{\textit{Best Hamburger Place}}   & In-N-Out Burger     & 162    & 181        & 343   \\
+                                        & Fat Burger     & 10    & 12         & 22 \\
+
+                                        & Tommy's Hamburgers     & 27   & 27        & 54  \\
+
+                                        & Umami Burger    & 5   & 1        & 6  \\
+
+                                        & Other    & 26   & 20        & 46  \\
+
+                                        & Not Sure   & 13   & 5        & 18  \\
+\cline{2-5}
+                                        & Total    & 248   & 252        & 500  \\
+\end{tabular}
+\end{center}
+
+(a) Are being female and liking Five Guys Burgers mutually exclusive?
+
+\textcolor{red}{No} \textcolor{blue}{because there are females who also like Five Guys Burgers. For variables to be mutually exclusive, they cannot happen at the same time.}
+
+(b) What is the probability that a randomly chosen male likes In-N-Out the best?
+
+```{r}
+162/248
+```
+
+\textcolor{blue}{There were 162 males who chose In-N-Out out of 248 males in the study. The probability that a randomly chosen male chose In-N-Out is:} \textcolor{red}{65.3\%}.
+
+(c) What is the probability that a randomly chosen female likes In-N-Out the best?
+
+```{r}
+181/252
+```
+
+\textcolor{blue}{There were 181 females who chose In-N-Out out of 252 females in the study. The probability that a randomly chosen female chose In-N-Out is:} \textcolor{red}{71.8\%}.
+
+(d) What is the probability that a man and a woman who are dating both like In-N-Out the best? Note
+any assumption you make and evaluate whether you think that assumption is reasonable.
+
+\[ \textcolor{red}{P(A\ and \ B) = P(A) \times P(B)}\]
+
+```{r}
+#Multiplication Rule of Independent Processes
+(181/252)*(162/248)
+```
+
+\textcolor{blue}{Assuming that burger preferences and dating preferences are indepentant of eachother (obveously being male and female are mutually exclusive), the probability of finding male and female pairs who both choose In-N-Out is} \textcolor{red}{46.9\%}.\textcolor{blue}{ These seem like reasonable assumptions: dating preferences are generally determined by other factors other than burger preference, and I guess you can't be male and female at one time (maybe only under super rare cases).}
+
+(e) What is the probability that a randomly chosen person likes Umami best or that person is female?
+
+\[ \textcolor{red}{P(A\ or \ B) = P(A) + P(B) - P(A \ and \ B)}\]
+
+```{r}
+#General Addition Rule
+(6/500) + (252/500) - (1/500)
+```
+
+\textcolor{blue}{The probability of finding someone who chose Umami Burger or someone who is female is} \textcolor{red}{51.4\%}.
